@@ -1,5 +1,5 @@
 streamlit
 qiskit
 pennylane
-scikit-learn
 tensorflow
+transformers

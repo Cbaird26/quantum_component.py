@@ -43,7 +43,7 @@ if st.button("Send"):
         st.session_state.chat_history.append(user_input)
         bot_response = process_input(user_input)
         st.session_state.chat_history.append(bot_response)
-        st.session_state.user_input = ""  # Clear input field
+        st.experimental_rerun()  # Rerun the app to clear the input field
 
 # Display chat history
 display_chat_history()

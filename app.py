@@ -1,6 +1,6 @@
 import streamlit as st
 import numpy as np
-from ai_component import make_prediction
+from ai_component import get_response
 from quantum_component import run_quantum_circuit
 
 st.title("AI and Quantum Computing Chatbot")
@@ -22,15 +22,8 @@ def process_input(user_input):
     if "quantum" in user_input.lower():
         quantum_result = run_quantum_circuit()
         response = f"Quantum Circuit Result: {quantum_result}"
-    elif "predict" in user_input.lower():
-        try:
-            input_data = np.array([float(x) for x in user_input.split(",")]).reshape(1, -1)
-            prediction = make_prediction(input_data)
-            response = f"AI Prediction: {np.argmax(prediction, axis=1)}"
-        except ValueError:
-            response = "Invalid input for prediction. Please enter comma-separated numerical values."
     else:
-        response = "I'm sorry, I didn't understand that. Please ask about quantum circuits or AI predictions."
+        response = get_response(user_input)
     
     return response
 
